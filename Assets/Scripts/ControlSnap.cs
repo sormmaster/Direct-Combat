@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
+[SelectionBase]
 public class ControlSnap : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -37,16 +38,19 @@ public class ControlSnap : MonoBehaviour
             lastTransform = transform.position;
             if(textMesh)
             {
-                textMesh.text = snapPos.x + "x" + snapPos.z;
+                string labelText = snapPos.x / trueScale + "x" + snapPos.z / trueScale;
+                textMesh.text = labelText;
+                gameObject.name = labelText;
             }
         }
     }
 
     void updateScale()
     {
-        if (transform.localScale.x != trueScale)
+        if (transform.localScale.x != (trueScale * 0.95f))
         {
-            transform.localScale = new Vector3(trueScale, trueScale, trueScale);
+            float scaled = trueScale * 0.95f;
+            transform.localScale = new Vector3(scaled, scaled, scaled);
 
         }
     }
