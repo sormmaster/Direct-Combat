@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] List<WayPoint> path;
+
     // Start is called before the first frame update
+    PathFinder pathfinder;
     void Start()
     {
-        StartCoroutine(TravelOverPoints());
+         pathfinder = FindObjectOfType<PathFinder>();
+         StartCoroutine(TravelOverPoints());
+        
     }
 
     // Update is called once per frame
@@ -19,7 +23,8 @@ public class EnemyMovement : MonoBehaviour
     
     IEnumerator TravelOverPoints()
     {
-        foreach(WayPoint point in path)
+        pathfinder.PerformSearch();
+        foreach(WayPoint point in pathfinder.getPath())
         {
             transform.localPosition = point.transform.position;
             yield return new WaitForSeconds(1f);

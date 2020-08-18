@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -18,18 +19,10 @@ public class PathFinder : MonoBehaviour
         Vector2.up,
         Vector2.right,
         Vector2.down,
-        Vector2.left    
+        Vector2.left
     };
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        loadBlocks();
-        setEndAndBeginning();
-        StartSearch();
-    }
-
-
+    private List<WayPoint> path = new List<WayPoint>();
 
     private void loadBlocks()
     {
@@ -37,7 +30,7 @@ public class PathFinder : MonoBehaviour
         foreach (WayPoint waypoint in waypoints)
         {
             bool exists = grid.ContainsKey(waypoint.getGridPosition());
-            if(!exists)
+            if (!exists)
             {
                 waypoint.SetTopColor(Color.gray);
                 grid.Add(waypoint.getGridPosition(), waypoint);
@@ -46,7 +39,7 @@ public class PathFinder : MonoBehaviour
                 waypoint.SetTopColor(Color.clear);
             }
         }
-        if(waypoints.Length == 0)
+        if (waypoints.Length == 0)
         {
             return;
         }
@@ -64,7 +57,7 @@ public class PathFinder : MonoBehaviour
         {
 
         }
-       
+
     }
 
     private void setEndAndBeginning()
@@ -80,15 +73,32 @@ public class PathFinder : MonoBehaviour
 
     }
 
-    public void StartSearch()
+    public void PerformSearch()
     {
+        loadBlocks();
+        setEndAndBeginning();
         isRunning = true;
         FindShortestPath();
+        CreatePath();
     }
 
-    public void SearchFinished()
-    {
+    public void CreatePath() {
+        path = new List<WayPoint>();
+        path.Add(end);
 
+        WayPoint previous = end.exploredFrom;
+        while (previous != start)
+        {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(start);
+        path.Reverse();
+        }
+
+    public List<WayPoint> getPath()
+    {
+        return path;
     }
 
     public void FindShortestPath()
