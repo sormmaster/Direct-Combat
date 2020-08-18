@@ -6,6 +6,8 @@ public class WayPoint : MonoBehaviour
 {
     const float gridScale = 10f;
     private Vector3 gridPosition;
+    public bool isExplored = false;
+    public WayPoint exploredFrom;
     // Start is called before the first frame update
     void awake()
     {
@@ -20,7 +22,7 @@ public class WayPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public float GetGridScale()

@@ -9,7 +9,10 @@ public class PathFinder : MonoBehaviour
 {
 
     Dictionary<Vector2, WayPoint> grid = new Dictionary<Vector2, WayPoint>();
+    Queue<WayPoint> queue = new Queue<WayPoint>();
+    bool isRunning = true;
     [SerializeField] WayPoint start, end;
+    WayPoint pivot;
     Vector2[] directions =
     {
         Vector2.up,
@@ -23,21 +26,10 @@ public class PathFinder : MonoBehaviour
     {
         loadBlocks();
         setEndAndBeginning();
-        ExploreNeighbors();
+        StartSearch();
     }
 
-    private void ExploreNeighbors()
-    {
-        foreach(Vector2 direction in directions)
-        {
-            Vector2 exploredNeighbor = start.getGridPosition() + direction;
 
-            if (grid.ContainsKey(exploredNeighbor))
-            {
-               grid[exploredNeighbor].SetTopColor(Color.white);
-            }
-        }
-    }
 
     private void loadBlocks()
     {
@@ -62,11 +54,11 @@ public class PathFinder : MonoBehaviour
         {
             if (!start)
             {
-                start = waypoints.First();
+                start = waypoints.Last();
             }
             if (!end)
             {
-                end = waypoints.Last();
+                end = waypoints.First();
             }
         } catch (System.Exception ignore)
         {
@@ -86,5 +78,59 @@ public class PathFinder : MonoBehaviour
 
         }
 
+    }
+
+    public void StartSearch()
+    {
+        isRunning = true;
+        FindShortestPath();
+    }
+
+    public void SearchFinished()
+    {
+
+    }
+
+    public void FindShortestPath()
+    {
+        
+        queue.Enqueue(start);
+
+        while(queue.Count > 0 && isRunning)
+        {
+            pivot = queue.Dequeue();
+            pivot.isExplored = true;
+            if(pivot.Equals(end))
+            {
+                print("found end");
+                isRunning = false;
+                return;
+            } else
+            {
+                ExploreNeighbors();
+            }
+            
+        }
+
+    }
+
+    private void ExploreNeighbors()
+    {
+        foreach (Vector2 direction in directions)
+        {
+            Vector2 exploredNeighbor = pivot.getGridPosition() + direction;
+
+            if (grid.ContainsKey(exploredNeighbor) && !grid[exploredNeighbor].isExplored && !queue.Contains(grid[exploredNeighbor]))
+            {
+                QueueNewNeighbors(exploredNeighbor);
+            }
+        }
+    }
+
+    private void QueueNewNeighbors(Vector2 explored)
+    {
+        WayPoint neighbor = grid[explored];
+        neighbor.exploredFrom = pivot;
+        queue.Enqueue(neighbor);
     }
 }
