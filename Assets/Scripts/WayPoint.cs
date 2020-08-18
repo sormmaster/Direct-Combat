@@ -31,8 +31,8 @@ public class WayPoint : MonoBehaviour
     public Vector2 getGridPosition()
     {
         return new Vector2(
-            Mathf.RoundToInt(transform.position.x / gridScale) * gridScale,
-            Mathf.RoundToInt(transform.position.z / gridScale) * gridScale
+            Mathf.RoundToInt(transform.position.x / gridScale),
+            Mathf.RoundToInt(transform.position.z / gridScale)
             );
     }
 
@@ -44,5 +44,12 @@ public class WayPoint : MonoBehaviour
     public Vector3 getPosition()
     {
         return gridPosition;
+    }
+
+    public void SetTopColor(Color color)
+    {
+       var top = transform.Find("Top");
+        MeshRenderer topMesh = top.GetComponent<MeshRenderer>();
+        topMesh.material.color = color;
     }
 }

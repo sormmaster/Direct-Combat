@@ -37,7 +37,7 @@ public class ControlSnap : MonoBehaviour
     {
         if (!transform.Equals(waypoint.getPosition()))
         {
-            waypoint.setPosition( new Vector3(waypoint.getGridPosition().x, forcedHeight, waypoint.getGridPosition().y));
+            waypoint.setPosition( new Vector3(waypoint.getGridPosition().x * trueScale, forcedHeight, waypoint.getGridPosition().y * trueScale));
             transform.position = waypoint.getPosition();
         }
     }
@@ -46,7 +46,7 @@ public class ControlSnap : MonoBehaviour
     {
         if (textMesh)
         {
-            string labelText = waypoint.getGridPosition().x / trueScale + "x" + waypoint.getGridPosition().y / trueScale;
+            string labelText = waypoint.getGridPosition().x + "x" + waypoint.getGridPosition().y;
             textMesh.text = labelText;
             gameObject.name = labelText;
         }
