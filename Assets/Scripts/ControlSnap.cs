@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 [ExecuteInEditMode]
 [SelectionBase]
+[RequireComponent(typeof(WayPoint))]
 public class ControlSnap : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] [Range(0f, 10f)] float forcedHeight = 0f;
-    [SerializeField] [Range(1f, 10f)] float trueScale = 5f;
-    Vector3 lastTransform = new Vector3();
+    float forcedHeight = 0f;
+    float trueScale;
+    WayPoint waypoint;
 
     TextMesh textMesh;
+    void Awake()
+    {
+        waypoint = GetComponent<WayPoint>();
+        trueScale = waypoint.GetGridScale();
+    }
     void Start()
     {
         textMesh = GetComponentInChildren<TextMesh>();
@@ -22,26 +28,27 @@ public class ControlSnap : MonoBehaviour
     void Update()
     {
         updatePosition();
+        updateLabel();
         updateScale();
        
     }
 
     void updatePosition()
     {
-        if (!transform.Equals(lastTransform))
+        if (!transform.Equals(waypoint.getPosition()))
         {
-            Vector3 snapPos;
-            snapPos.x = Mathf.RoundToInt(transform.position.x / trueScale) * trueScale;
-            snapPos.z = Mathf.RoundToInt(transform.position.z / trueScale) * trueScale;
-            snapPos.y = forcedHeight;
-            transform.position = snapPos;
-            lastTransform = transform.position;
-            if(textMesh)
-            {
-                string labelText = snapPos.x / trueScale + "x" + snapPos.z / trueScale;
-                textMesh.text = labelText;
-                gameObject.name = labelText;
-            }
+            waypoint.setPosition( new Vector3(waypoint.getGridPosition().x, forcedHeight, waypoint.getGridPosition().y));
+            transform.position = waypoint.getPosition();
+        }
+    }
+
+    void updateLabel()
+    {
+        if (textMesh)
+        {
+            string labelText = waypoint.getGridPosition().x / trueScale + "x" + waypoint.getGridPosition().y / trueScale;
+            textMesh.text = labelText;
+            gameObject.name = labelText;
         }
     }
 
