@@ -98,6 +98,10 @@ public class PathFinder : MonoBehaviour
 
     public List<WayPoint> getPath()
     {
+        if (path.Count == 0)
+        {
+            PerformSearch();
+        }
         return path;
     }
 

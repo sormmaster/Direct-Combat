@@ -22,8 +22,7 @@ public class EnemyMovement : MonoBehaviour
     }
     
     IEnumerator TravelOverPoints()
-    {
-        pathfinder.PerformSearch();
+    {        
         foreach(WayPoint point in pathfinder.getPath())
         {
             transform.localPosition = point.transform.position;
