@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] int hitPoints = 10;
+    [SerializeField] int hitPoints = 2;
     // Start is called before the first frame update
     void Start()
     {

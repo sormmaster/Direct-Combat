@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769a8c5c019793344966c4d07f2f881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objecttoPan: {fileID: 8283275273820391937}
-  enemyToLookAt: {fileID: 0}
+  attackRange: 50
 --- !u!1001 &488326546175297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,11 +52,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8283275273820391937}
     m_Modifications:
-    - target: {fileID: 6482261034719371595, guid: da1fea6e82061ca4890477bd3c10c521,
-        type: 3}
-      propertyPath: m_Name
-      value: Bullets
-      objectReference: {fileID: 0}
     - target: {fileID: 4862601551468833242, guid: da1fea6e82061ca4890477bd3c10c521,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -113,6 +107,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6482261034719371595, guid: da1fea6e82061ca4890477bd3c10c521,
+        type: 3}
+      propertyPath: m_Name
+      value: Bullets
+      objectReference: {fileID: 0}
     - target: {fileID: 8628595724755571910, guid: da1fea6e82061ca4890477bd3c10c521,
         type: 3}
       propertyPath: moveWithTransform
@@ -122,6 +121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.collisionMessages
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628595724755571910, guid: da1fea6e82061ca4890477bd3c10c521,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1fea6e82061ca4890477bd3c10c521, type: 3}

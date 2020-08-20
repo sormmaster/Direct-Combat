@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
         foreach(WayPoint point in pathfinder.getPath())
         {
             transform.localPosition = point.transform.position;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
     }
 }
