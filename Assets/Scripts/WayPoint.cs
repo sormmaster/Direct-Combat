@@ -8,10 +8,11 @@ public class WayPoint : MonoBehaviour
     private Vector3 gridPosition;
     public bool isExplored = false;
     public WayPoint exploredFrom;
+    public bool isPlaceable = true;
     // Start is called before the first frame update
     void awake()
     {
-        gridPosition = transform.position;
+            gridPosition = transform.position;
     }
     
     void Start()
@@ -26,7 +27,32 @@ public class WayPoint : MonoBehaviour
     }
     void OnMouseOver()
     {
-        Debug.Log("hovering over " + gameObject.name);
+        // update with enum
+        if (Input.GetMouseButtonDown(0))
+        {
+            placeObject(true);
+        } else if (Input.GetMouseButtonDown(1))
+        {
+            placeObject(false);
+        }
+    }
+
+    void placeObject(bool tower)
+    {
+        if (isPlaceable)
+        {
+            //update with switch statement
+            if(tower)
+            {
+                Debug.Log("clicked on " + gameObject.name);
+            } else
+            {
+                Debug.Log("create a wall at " + gameObject.name);
+            }
+        } else
+        {
+            Debug.Log("cannot place on " + gameObject.name);
+        }
     }
 
     public float GetGridScale()
@@ -48,7 +74,7 @@ public class WayPoint : MonoBehaviour
     }
 
     public Vector3 getPosition()
-    {
+    { 
         return gridPosition;
     }
 

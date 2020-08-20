@@ -66,17 +66,22 @@ public class PathFinder : MonoBehaviour
 
     public void CreatePath() {
         path = new List<WayPoint>();
-        path.Add(end);
-
+        joinToPath(end);
         WayPoint previous = end.exploredFrom;
         while (previous != start)
         {
-            path.Add(previous);
+            joinToPath(previous);
             previous = previous.exploredFrom;
         }
-        path.Add(start);
+        joinToPath(start);
         path.Reverse();
         }
+
+    public void joinToPath(WayPoint point)
+    {
+        path.Add(point);
+        point.isPlaceable = false;
+    }
 
     public List<WayPoint> getPath()
     {
