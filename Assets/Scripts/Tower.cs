@@ -57,14 +57,12 @@ public class Tower : MonoBehaviour
         if(enemies.Length == 0) { return; }
 
         Transform closestEnemy = enemies[0].transform;
-        print("got list" + enemies);
         foreach (EnemyDamage enemy in enemies) {
             if(!isCloser(closestEnemy, enemy.transform))
             {
                 closestEnemy = enemy.transform;
             }
         }
-        print("targeting at " + closestEnemy);
         enemyToLookAt = closestEnemy;
     }
 

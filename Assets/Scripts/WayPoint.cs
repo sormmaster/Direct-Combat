@@ -24,6 +24,10 @@ public class WayPoint : MonoBehaviour
     {
 
     }
+    void OnMouseOver()
+    {
+        Debug.Log("hovering over " + gameObject.name);
+    }
 
     public float GetGridScale()
     {
@@ -48,10 +52,4 @@ public class WayPoint : MonoBehaviour
         return gridPosition;
     }
 
-    public void SetTopColor(Color color)
-    {
-       var top = transform.Find("Top");
-        MeshRenderer topMesh = top.GetComponent<MeshRenderer>();
-        topMesh.material.color = color;
-    }
 }

@@ -32,11 +32,7 @@ public class PathFinder : MonoBehaviour
             bool exists = grid.ContainsKey(waypoint.getGridPosition());
             if (!exists)
             {
-                waypoint.SetTopColor(Color.gray);
                 grid.Add(waypoint.getGridPosition(), waypoint);
-            } else
-            {
-                waypoint.SetTopColor(Color.clear);
             }
         }
         if (waypoints.Length == 0)
@@ -60,23 +56,9 @@ public class PathFinder : MonoBehaviour
 
     }
 
-    private void setEndAndBeginning()
-    {
-        try
-        {
-            start.SetTopColor(Color.cyan);
-            end.SetTopColor(Color.blue);
-        } catch (System.Exception ignore)
-        {
-
-        }
-
-    }
-
     public void PerformSearch()
     {
         loadBlocks();
-        setEndAndBeginning();
         isRunning = true;
         FindShortestPath();
         CreatePath();
