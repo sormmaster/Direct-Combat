@@ -5,10 +5,14 @@ using UnityEngine;
 public class WayPoint : MonoBehaviour
 {
     const float gridScale = 10f;
+
     private Vector3 gridPosition;
+    [SerializeField] Tower towerPrefab;
+
     public bool isExplored = false;
     public WayPoint exploredFrom;
     public bool isPlaceable = true;
+
     // Start is called before the first frame update
     void awake()
     {
@@ -44,6 +48,8 @@ public class WayPoint : MonoBehaviour
             //update with switch statement
             if(tower)
             {
+                Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
                 Debug.Log("clicked on " + gameObject.name);
             } else
             {

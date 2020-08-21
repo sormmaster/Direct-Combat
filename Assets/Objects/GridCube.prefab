@@ -231,8 +231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3250882a0a487714293a806856dd4dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 3339005718176609254, guid: 95c19c1818dac43479e66dd0f1dc8dba,
+    type: 3}
   isExplored: 0
   exploredFrom: {fileID: 0}
+  isPlaceable: 1
 --- !u!64 &2073479427352277417
 MeshCollider:
   m_ObjectHideFlags: 0

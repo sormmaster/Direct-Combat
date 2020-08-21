@@ -7,6 +7,7 @@ public class Tower : MonoBehaviour
 {
     
     [SerializeField] float attackRange = 25f;
+    [SerializeField] GameObject towerHead;
     private Vector3 defaultAngles;
     private ParticleSystem laser;
 
@@ -14,7 +15,7 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        defaultAngles = gameObject.transform.rotation.eulerAngles;
+        defaultAngles = towerHead.transform.rotation.eulerAngles;
         laser = GetComponentInChildren<ParticleSystem>();
     }
 
@@ -27,7 +28,7 @@ public class Tower : MonoBehaviour
             returnToNuetral();
             return;
         }
-        if (Vector3.Distance(enemyToLookAt.transform.position, gameObject.transform.position) < attackRange){
+        if (Vector3.Distance(enemyToLookAt.transform.position, towerHead.transform.position) < attackRange){
             fireAt();
         } else
         {
@@ -38,7 +39,7 @@ public class Tower : MonoBehaviour
 
     void fireAt()
     {
-        gameObject.transform.LookAt(enemyToLookAt);
+        towerHead.transform.LookAt(enemyToLookAt);
         var emision = laser.emission;
         emision.enabled = true;
         
@@ -46,7 +47,7 @@ public class Tower : MonoBehaviour
 
     void returnToNuetral()
     {
-        gameObject.transform.eulerAngles = new Vector3(defaultAngles.x, gameObject.transform.eulerAngles.y, defaultAngles.z);
+        towerHead.transform.eulerAngles = new Vector3(defaultAngles.x, towerHead.transform.eulerAngles.y, defaultAngles.z);
         var emision = laser.emission;
         emision.enabled = false;
     }
@@ -68,8 +69,8 @@ public class Tower : MonoBehaviour
 
     bool isCloser(Transform one, Transform two)
     {
-        var distanceOne = Vector3.Distance(transform.position, one.position);
-        var distanceTwo = Vector3.Distance(transform.position, two.position);
+        var distanceOne = Vector3.Distance(towerHead.transform.position, one.position);
+        var distanceTwo = Vector3.Distance(towerHead.transform.position, two.position);
 
         return (distanceOne < distanceTwo);
     }
