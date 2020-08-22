@@ -6,10 +6,12 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] int hitPoints = 2;
+    [SerializeField] ParticleSystem hitParticlesPrefab;
+    [SerializeField] ParticleSystem deathParticlePrefab;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,9 +22,12 @@ public class EnemyDamage : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        hitParticlesPrefab.Play();
         processHit();
         if(hitPoints < 1)
         {
+            var vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+            vfx.Play();
             destroyEnemy();
         }
     }

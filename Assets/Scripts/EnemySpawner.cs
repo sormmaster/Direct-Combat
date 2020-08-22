@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] [Range(1f, 20f)] float enemySpawnRate = 2f;
     [SerializeField] int roundCount = 10;
     [SerializeField] EnemyMovement enemyDefault;
+    [SerializeField] [Tooltip("Suggested to be half the gridsize.")] float suggestedAdjustment = 5f;
     void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -18,7 +20,10 @@ public class EnemySpawner : MonoBehaviour
         int spawnCount = 0;
         while(spawnCount <= roundCount)
         {
-            Instantiate(enemyDefault, transform.position, Quaternion.identity);
+            Vector3 enemyStartingPosition = transform.position;
+            enemyStartingPosition.Set(enemyStartingPosition.x, suggestedAdjustment, enemyStartingPosition.z);
+
+            Instantiate(enemyDefault, enemyStartingPosition, Quaternion.identity);
             yield return new WaitForSeconds(enemySpawnRate);
             spawnCount++;
         }

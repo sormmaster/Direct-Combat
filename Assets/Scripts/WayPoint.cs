@@ -48,6 +48,8 @@ public class WayPoint : MonoBehaviour
             //update with switch statement
             if(tower)
             {
+                Vector3 towerPosition = transform.position;
+                towerPosition.Set(towerPosition.x, gridScale / 2, towerPosition.z);
                 Instantiate(towerPrefab, transform.position, Quaternion.identity);
                 isPlaceable = false;
                 Debug.Log("clicked on " + gameObject.name);

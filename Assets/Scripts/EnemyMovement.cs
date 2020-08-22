@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     
     // Start is called before the first frame update
     PathFinder pathfinder;
+    [SerializeField ]public float heightAdjustment = 5f;
     void Start()
     {
          pathfinder = FindObjectOfType<PathFinder>();
@@ -25,7 +26,10 @@ public class EnemyMovement : MonoBehaviour
     {        
         foreach(WayPoint point in pathfinder.getPath())
         {
-            transform.localPosition = point.transform.position;
+           
+            Vector3 enemyNewPosition = point.transform.position;
+            enemyNewPosition.Set(enemyNewPosition.x, point.GetGridScale()/2, enemyNewPosition.z);
+            transform.localPosition = enemyNewPosition;
             yield return new WaitForSeconds(1f);
         }
     }
