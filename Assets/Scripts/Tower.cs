@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
     private Vector3 defaultAngles;
     private ParticleSystem laser;
 
+    public WayPoint baseWaypoint;
+
     Transform enemyToLookAt;
     // Start is called before the first frame update
     void Start()

@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int roundCount = 10;
     [SerializeField] EnemyMovement enemyDefault;
     [SerializeField] [Tooltip("Suggested to be half the gridsize.")] float suggestedAdjustment = 5f;
+    
     void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -23,7 +24,8 @@ public class EnemySpawner : MonoBehaviour
             Vector3 enemyStartingPosition = transform.position;
             enemyStartingPosition.Set(enemyStartingPosition.x, suggestedAdjustment, enemyStartingPosition.z);
 
-            Instantiate(enemyDefault, enemyStartingPosition, Quaternion.identity);
+            var enemy = Instantiate(enemyDefault, enemyStartingPosition, Quaternion.identity);
+            enemy.transform.parent = gameObject.transform;
             yield return new WaitForSeconds(enemySpawnRate);
             spawnCount++;
         }

@@ -19,16 +19,7 @@ public class WayPoint : MonoBehaviour
             gridPosition = transform.position;
     }
     
-    void Start()
-    {
-       
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     void OnMouseOver()
     {
         // update with enum
