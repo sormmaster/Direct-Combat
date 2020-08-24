@@ -7,7 +7,7 @@ public class WayPoint : MonoBehaviour
     const float gridScale = 10f;
 
     private Vector3 gridPosition;
-    [SerializeField] Tower towerPrefab;
+    
 
     public bool isExplored = false;
     public WayPoint exploredFrom;
@@ -48,11 +48,7 @@ public class WayPoint : MonoBehaviour
             //update with switch statement
             if(tower)
             {
-                Vector3 towerPosition = transform.position;
-                towerPosition.Set(towerPosition.x, gridScale / 2, towerPosition.z);
-                Instantiate(towerPrefab, transform.position, Quaternion.identity);
-                isPlaceable = false;
-                Debug.Log("clicked on " + gameObject.name);
+                FindObjectOfType<TowerFactory>().CreteTowerAtPoint(this);
             } else
             {
                 Debug.Log("create a wall at " + gameObject.name);
