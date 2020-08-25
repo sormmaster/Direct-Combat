@@ -2183,6 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLimit: 5
+  parentOfTowers: {fileID: 1128628592}
   towerPrefab: {fileID: 3339005718176609254, guid: 95c19c1818dac43479e66dd0f1dc8dba,
     type: 3}
 --- !u!1001 &828336500

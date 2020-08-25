@@ -9603,6 +9603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightAdjustment: 5
+  movementPause: 0.5
+  goalParticle: {fileID: 3671668904197325254}
 --- !u!54 &922347148
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19147,11 +19149,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4315494380308652530}
     m_Modifications:
-    - target: {fileID: 3090627110943185261, guid: 8342033cf6c3b924e93e28424b8b84ab,
-        type: 3}
-      propertyPath: m_Name
-      value: HitEffect
-      objectReference: {fileID: 0}
     - target: {fileID: 5746254842231719861, guid: 8342033cf6c3b924e93e28424b8b84ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19226,6 +19223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090627110943185261, guid: 8342033cf6c3b924e93e28424b8b84ab,
+        type: 3}
+      propertyPath: m_Name
+      value: HitEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8342033cf6c3b924e93e28424b8b84ab, type: 3}
@@ -19317,10 +19319,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4315494380308652530}
     m_Modifications:
-    - target: {fileID: 740558025252930249, guid: 48fa7c64ff619b747a8b2235dc57071b,
+    - target: {fileID: 9159439376084654837, guid: 48fa7c64ff619b747a8b2235dc57071b,
         type: 3}
-      propertyPath: m_Name
-      value: DeathEffect
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1085286815319677544, guid: 48fa7c64ff619b747a8b2235dc57071b,
         type: 3}
@@ -19377,10 +19379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9159439376084654837, guid: 48fa7c64ff619b747a8b2235dc57071b,
+    - target: {fileID: 740558025252930249, guid: 48fa7c64ff619b747a8b2235dc57071b,
         type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 1000
+      propertyPath: m_Name
+      value: DeathEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fa7c64ff619b747a8b2235dc57071b, type: 3}

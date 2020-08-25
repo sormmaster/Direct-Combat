@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,20 +14,24 @@ public class EnemySpawner : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnEnemy(10, 0.5f, 2f));
+        new WaitForSeconds(1f);
+        StartCoroutine(SpawnEnemy(5, 0.25f, 10f));
     }
 
-    IEnumerator SpawnEnemy()
+    IEnumerator SpawnEnemy(int waveCount, float speed, float spread)
     {
+        
         int spawnCount = 0;
-        while(spawnCount <= roundCount)
+        while(spawnCount <= waveCount)
         {
             Vector3 enemyStartingPosition = transform.position;
             enemyStartingPosition.Set(enemyStartingPosition.x, suggestedAdjustment, enemyStartingPosition.z);
 
             var enemy = Instantiate(enemyDefault, enemyStartingPosition, Quaternion.identity);
+            enemy.movementPause = speed;
             enemy.transform.parent = gameObject.transform;
-            yield return new WaitForSeconds(enemySpawnRate);
+            yield return new WaitForSeconds(spread);
             spawnCount++;
         }
     }
