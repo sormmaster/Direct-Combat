@@ -2279,6 +2279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1466924445}
   end: {fileID: 1530834513}
+  enemyPlanePrefab: {fileID: 2141601147645147306, guid: 870a6b48654d2fa46bda9d9a24cd4e65,
+    type: 3}
 --- !u!114 &827177310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,6 +5226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 474930063}
     m_Modifications:
+    - target: {fileID: 1716733542366808, guid: a467c20795e0fed40b0d21d2bebe3b04, type: 3}
+      propertyPath: m_Name
+      value: Friendly_Base
+      objectReference: {fileID: 0}
     - target: {fileID: 4219318968960842, guid: a467c20795e0fed40b0d21d2bebe3b04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.71879
@@ -5267,10 +5273,6 @@ PrefabInstance:
     - target: {fileID: 4219318968960842, guid: a467c20795e0fed40b0d21d2bebe3b04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716733542366808, guid: a467c20795e0fed40b0d21d2bebe3b04, type: 3}
-      propertyPath: m_Name
-      value: Friendly_Base
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a467c20795e0fed40b0d21d2bebe3b04, type: 3}

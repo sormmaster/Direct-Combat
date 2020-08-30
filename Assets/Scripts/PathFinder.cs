@@ -23,6 +23,7 @@ public class PathFinder : MonoBehaviour
     };
 
     private List<WayPoint> path = new List<WayPoint>();
+    public WayPoint enemyPlanePrefab;
 
     private void loadBlocks()
     {
@@ -62,18 +63,26 @@ public class PathFinder : MonoBehaviour
         isRunning = true;
         FindShortestPath();
         CreatePath();
+        foreach (WayPoint point in path)
+        {
+            
+        }
     }
 
     public void CreatePath() {
         path = new List<WayPoint>();
-        joinToPath(end);
-        WayPoint previous = end.exploredFrom;
+        WayPoint replacedEnd = swapPrefabWithPath(end);
+        joinToPath(replacedEnd);
+       
+        WayPoint previous = replacedEnd.exploredFrom;
         while (previous != start)
         {
-            joinToPath(previous);
-            previous = previous.exploredFrom;
+            WayPoint replacedPoint = swapPrefabWithPath(previous);
+            joinToPath(replacedPoint);
+            previous = replacedPoint.exploredFrom;
         }
-        joinToPath(start);
+        WayPoint replacedStart = swapPrefabWithPath(start);
+        joinToPath(replacedStart);
         path.Reverse();
         }
 
@@ -133,5 +142,18 @@ public class PathFinder : MonoBehaviour
         WayPoint neighbor = grid[explored];
         neighbor.exploredFrom = pivot;
         queue.Enqueue(neighbor);
+    }
+
+    private WayPoint swapPrefabWithPath(WayPoint original)
+    {
+        WayPoint replacement = Instantiate(enemyPlanePrefab, original.transform.position, Quaternion.identity);
+        replacement.transform.localScale = original.transform.localScale;
+        replacement.transform.parent = original.transform.parent;
+        replacement.exploredFrom = original.exploredFrom;
+        replacement.isExplored = original.isExplored;
+        replacement.isPlaceable = original.isPlaceable;
+        Destroy(original);
+        return replacement;
+
     }
 }

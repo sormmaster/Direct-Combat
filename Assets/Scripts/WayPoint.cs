@@ -7,18 +7,20 @@ public class WayPoint : MonoBehaviour
     const float gridScale = 10f;
 
     private Vector3 gridPosition;
-    
+
 
     public bool isExplored = false;
     public WayPoint exploredFrom;
     public bool isPlaceable = true;
 
+ 
+
     // Start is called before the first frame update
     void awake()
     {
-            gridPosition = transform.position;
+        gridPosition = transform.position;
     }
-    
+
 
     void OnMouseOver()
     {
@@ -37,7 +39,7 @@ public class WayPoint : MonoBehaviour
         if (isPlaceable)
         {
             //update with switch statement
-            if(tower)
+            if (tower)
             {
                 FindObjectOfType<TowerFactory>().CreteTowerAtPoint(this);
             } else
@@ -69,7 +71,7 @@ public class WayPoint : MonoBehaviour
     }
 
     public Vector3 getPosition()
-    { 
+    {
         return gridPosition;
     }
 
