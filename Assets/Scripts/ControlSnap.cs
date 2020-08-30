@@ -23,7 +23,11 @@ public class ControlSnap : MonoBehaviour
     void Start()
     {
         textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = "TEST";
+        if(!(textMesh is null))
+        {
+            textMesh.text = "TEST";
+        } 
+       
     }
     void Update()
     {
@@ -44,7 +48,7 @@ public class ControlSnap : MonoBehaviour
 
     void updateLabel()
     {
-        if (textMesh)
+        if (!(textMesh is null))
         {
             string labelText = waypoint.getGridPosition().x + "x" + waypoint.getGridPosition().y;
             textMesh.text = labelText;

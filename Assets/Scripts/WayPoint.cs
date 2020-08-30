@@ -36,19 +36,20 @@ public class WayPoint : MonoBehaviour
 
     void placeObject(bool tower)
     {
-        if (isPlaceable)
+        if (tower)
         {
             //update with switch statement
-            if (tower)
+            if (isPlaceable)
             {
                 FindObjectOfType<TowerFactory>().CreteTowerAtPoint(this);
-            } else
-            {
-                Debug.Log("create a wall at " + gameObject.name);
             }
         } else
         {
-            Debug.Log("cannot place on " + gameObject.name);
+            if(!isPlaceable)
+            {
+                FindObjectOfType<WallFactory>().CreateWallAtPoint(this);
+            }
+          
         }
     }
 

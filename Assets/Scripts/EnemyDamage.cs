@@ -20,6 +20,10 @@ public class EnemyDamage : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("something hit me");
+    }
 
     void processHit()
     {

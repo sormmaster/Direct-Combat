@@ -152,6 +152,11 @@ public class PathFinder : MonoBehaviour
         replacement.exploredFrom = original.exploredFrom;
         replacement.isExplored = original.isExplored;
         replacement.isPlaceable = original.isPlaceable;
+        ControlSnap snapcheck = original.GetComponent<ControlSnap>();
+        if(!(snapcheck is null))
+        {
+            Destroy(snapcheck);
+        }
         Destroy(original);
         return replacement;
 

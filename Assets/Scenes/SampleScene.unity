@@ -1142,7 +1142,7 @@ PrefabInstance:
     - target: {fileID: 6537251738917752581, guid: 66d904611c38c2a4896ab52a6c76fa3a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 73
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6537251738917752581, guid: 66d904611c38c2a4896ab52a6c76fa3a,
         type: 3}
@@ -1886,6 +1886,36 @@ MonoBehaviour:
   isExplored: 0
   exploredFrom: {fileID: 0}
   isPlaceable: 1
+--- !u!1 &286013700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286013701}
+  m_Layer: 0
+  m_Name: Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286013701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286013700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &296576702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6537251738917752581, guid: 66d904611c38c2a4896ab52a6c76fa3a,
@@ -5144,6 +5174,7 @@ GameObject:
   - component: {fileID: 827177308}
   - component: {fileID: 827177309}
   - component: {fileID: 827177310}
+  - component: {fileID: 827177311}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -5270,6 +5301,21 @@ MonoBehaviour:
   towerLimit: 5
   parentOfTowers: {fileID: 1128628592}
   towerPrefab: {fileID: 3339005718176609254, guid: 95c19c1818dac43479e66dd0f1dc8dba,
+    type: 3}
+--- !u!114 &827177311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827177307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563b743ee73ce2f49bf451039df88d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOfWalls: {fileID: 286013700}
+  wallPrefab: {fileID: 4876565526225850467, guid: 80d8a956ab297b547828b6a109c1e196,
     type: 3}
 --- !u!1 &834671213
 GameObject:
@@ -7297,7 +7343,7 @@ PrefabInstance:
     - target: {fileID: 6537251738917752581, guid: 66d904611c38c2a4896ab52a6c76fa3a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 74
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 6537251738917752581, guid: 66d904611c38c2a4896ab52a6c76fa3a,
         type: 3}
