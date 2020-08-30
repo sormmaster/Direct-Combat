@@ -27,7 +27,7 @@ public class PathFinder : MonoBehaviour
 
     private void loadBlocks()
     {
-        WayPoint[] waypoints = FindObjectsOfType<WayPoint>();
+        WayPoint[] waypoints = GetComponentsInChildren<WayPoint>();
         foreach (WayPoint waypoint in waypoints)
         {
             bool exists = grid.ContainsKey(waypoint.getGridPosition());
