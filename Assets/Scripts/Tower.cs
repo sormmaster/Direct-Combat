@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     [SerializeField] GameObject towerHead;
     private Vector3 defaultAngles;
     private ParticleSystem laser;
+    [SerializeField] AudioClip laserBrrrrr;
 
     public WayPoint baseWaypoint;
 
@@ -34,7 +35,10 @@ public class Tower : MonoBehaviour
             fireAt();
         } else
         {
-            returnToNuetral();
+            if(laser.emission.enabled == true)
+            {
+                returnToNuetral();
+            }
         }
             
     }
@@ -44,7 +48,6 @@ public class Tower : MonoBehaviour
         towerHead.transform.LookAt(enemyToLookAt);
         var emision = laser.emission;
         emision.enabled = true;
-        
     }
 
     void returnToNuetral()
@@ -52,6 +55,7 @@ public class Tower : MonoBehaviour
         towerHead.transform.eulerAngles = new Vector3(defaultAngles.x, towerHead.transform.eulerAngles.y, defaultAngles.z);
         var emision = laser.emission;
         emision.enabled = false;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(laserBrrrrr);
     }
 
     void SetTargetEnemy()

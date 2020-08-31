@@ -9636,6 +9636,8 @@ MonoBehaviour:
   hitPoints: 10
   hitParticlesPrefab: {fileID: 5710724561866124006}
   deathParticlePrefab: {fileID: 3671668904197325254}
+  hitSFX: {fileID: 8300000, guid: a1addcf1f750ecc4ebadd98190f03789, type: 3}
+  deathSFX: {fileID: 8300000, guid: dcf3d12e6acccff42851145d5c7ffc68, type: 3}
 --- !u!1 &7047962116230107793
 GameObject:
   m_ObjectHideFlags: 0
@@ -19324,6 +19326,11 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 740558025252930249, guid: 48fa7c64ff619b747a8b2235dc57071b,
+        type: 3}
+      propertyPath: m_Name
+      value: DeathEffect
+      objectReference: {fileID: 0}
     - target: {fileID: 1085286815319677544, guid: 48fa7c64ff619b747a8b2235dc57071b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19378,11 +19385,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 740558025252930249, guid: 48fa7c64ff619b747a8b2235dc57071b,
-        type: 3}
-      propertyPath: m_Name
-      value: DeathEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fa7c64ff619b747a8b2235dc57071b, type: 3}

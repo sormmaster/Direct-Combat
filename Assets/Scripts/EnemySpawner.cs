@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] EnemyMovement enemyDefault;
     [SerializeField] [Tooltip("Suggested to be half the gridsize.")] float suggestedAdjustment = 5f;
     [SerializeField] Text spawnText;
+    [SerializeField] AudioClip spawnSFX;
     int score = 0;
     void Start()
     {
@@ -34,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
             var enemy = Instantiate(enemyDefault, enemyStartingPosition, Quaternion.identity);
             enemy.movementPause = speed;
             enemy.transform.parent = gameObject.transform;
+            GetComponent<AudioSource>().PlayOneShot(spawnSFX);
             yield return new WaitForSeconds(spread);
             spawnCount++;
             score++;
